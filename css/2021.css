@@ -46,7 +46,7 @@
     visibility: hidden;
 }
 
-.nav {
+.site-theme-dark .nav-unscoped.transparent {
     background: rgb(var(--color-foregound));
 }
 
@@ -55,7 +55,7 @@
 
 }
 
-.banner {
+.banner[data-v-5445dac8] {
     background-color: rgb(var(--color-foregound));
 }
 
@@ -64,11 +64,12 @@
     align-items: center;
 }
 
-.name {
+.name[data-v-5445dac8] {
+    font-size: 8rem;
     padding: 30px 50px 0px 0px;
 }
 
-.avatar {
+.avatar[data-v-5445dac8] {
     width: 0;
     height: 0;
 }
