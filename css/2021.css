@@ -1,12 +1,134 @@
-/* Cool Custom CSS v1.0
+/* 
+    Cool Custom CSS v1.0
 
     Description to be written later on
 
 */
 
-:root, .site-theme-dark, .site-theme-contrast {
-    --color-background: 11,22,34;
-    --color-foreground: 21,31,46;
+/*===============================================
+    Importing all animations
+===============================================*/
+
+@charset "UTF-8";
+
+/*!
+ * animate.css - https://animate.style/
+ * Version - 4.1.1
+ * Licensed under the MIT license - http://opensource.org/licenses/MIT
+ *
+ * Copyright (c) 2020 Animate.css
+ */
+
+:root {
+    --animate-duration: 1s;
+    --animate-delay: 1s;
+    --animate-repeat: 1
+}
+
+@keyframes shakeY {
+    0%,
+    to {
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        -webkit-transform: translate3d(0, -10px, 0);
+        transform: translate3d(0, -10px, 0)
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        -webkit-transform: translate3d(0, 10px, 0);
+        transform: translate3d(0, 10px, 0)
+    }
+}
+
+.animate__shakeY {
+    -webkit-animation-name: shakeY;
+    animation-name: shakeY
+}
+
+@-webkit-keyframes swing {
+    20% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+    40% {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+    60% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+    80% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+    to {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+}
+
+@keyframes swing {
+    25% {
+        -webkit-transform: rotate(15deg);
+        transform: rotate(15deg)
+    }
+    50% {
+        -webkit-transform: rotate(-15deg);
+        transform: rotate(-15deg)
+    }
+    75% {
+        -webkit-transform: rotate(10deg);
+        transform: rotate(10deg)
+    }
+    to {
+        -webkit-transform: rotate(-10deg);
+        transform: rotate(-10deg)
+    }
+}
+
+.animate__swing {
+    -webkit-transform-origin: top center;
+    transform-origin: top center;
+    -webkit-animation-name: swing;
+    animation-name: swing
+}
+
+
+/*===============================================
+    body element modifications
+===============================================*/
+
+body {
+    cursor: url(https://imgur.com/9DiNnYL.png), auto;
+    overflow: overlay;
+    background: rgba(var(--color-background)) !important;
+    box-shadow: inset 0 330px 50px rgba(0,0,0,0.7);
+}
+
+body::-webkit-scrollbar       {background-color: rgba(255, 255, 255, 0); width: 6px;}
+body::-webkit-scrollbar-track {background-color: rgba(255, 255, 255, 0);}
+body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); border-radius:15px; width: 4px}
+
+.about .content-wrap[data-v-5c30286e]::-webkit-scrollbar       {background-color: rgba(255, 255, 255, 0); width:4px}
+.about .content-wrap[data-v-5c30286e]::-webkit-scrollbar-track {background-color: rgba(255, 255, 255, 0);}
+.about .content-wrap[data-v-5c30286e]::-webkit-scrollbar-thumb {background-color: rgba(196, 196, 240, 0.20); border-radius:10px;}
+
+/*===============================================
+    Turning 3 site themes into 1
+===============================================*/
+
+:root, body, .site-theme-dark, .site-theme-contrast {
+    --color-background: 12, 19, 30;
+    --color-foreground: 19, 28, 40;
     --color-foreground-grey: 15,22,31;
     --color-foreground-grey-dark: 6,12,19;
     --color-foreground-blue: 15,22,31;
@@ -39,15 +161,31 @@
     --color-gray-300: 30,42,56;
     --color-gray-100: 21,31,46;
     --color-gray-200: 11,22,34;
+    --cc-foreground: 21,34,50;
+
+    background: rgb(var(--color-background));
 }
+
+/*===============================================
+    Removing that stupid genres widget
+===============================================*/
 
 .desktop[data-v-aedb6876] {
     height: 0;
     visibility: hidden;
 }
 
-.site-theme-dark .nav-unscoped.transparent {
-    background: rgb(var(--color-foregound));
+/*===============================================
+    Header modifications
+===============================================*/
+
+.site-theme-dark .nav-unscoped.transparent, 
+.site-theme-dark .nav-unscoped {
+    background: rgb(var(--color-foreground));
+}
+
+.site-theme-dark .nav-unscoped.transparent:hover {
+    background: rgb(var(--color-foreground));
 }
 
 .header-wrap .banner {
@@ -56,10 +194,14 @@
 }
 
 .banner[data-v-5445dac8] {
-    background-color: rgb(var(--color-foregound));
+    background-color: rgb(var(--color-foreground));
 }
 
-.banner .container,
+.banner[style] {
+    background-image: none !important;
+}
+
+.banner .container[data-v-5445dac8],
 .banner .container .banner-content {
     align-items: center;
 }
@@ -67,9 +209,179 @@
 .name[data-v-5445dac8] {
     font-size: 8rem;
     padding: 30px 50px 0px 0px;
+    display: flex;
+    align-items: center;
+}
+
+.banner-content h1.name {
+    filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
 }
 
 .avatar[data-v-5445dac8] {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 2px solid white;
+    margin-right: 20px;
+    transform: rotate(-10deg);
+    animation: swing 10s;
+    animation-iteration-count: infinite;
+}
+
+.banner-content[data-v-5445dac8] {
+    margin-top: 20px;
+}
+
+.banner-content[data-v-5445dac8]:after{
+    content: "";
+    background: url('https://i.imgur.com/zoJx4ue.png') no-repeat 0 0;
+    display: inline-block;
+    height: 310px;
+    width: 2000px;
+    margin-left: 57%;
+    animation: shakeY 30s;
+    animation-iteration-count: infinite;
+}
+
+.actions[data-v-5445dac8] {
+    min-width: 1px;
+    display: flex;
+    align-items: center;
+    margin-left: -290px;
+}
+
+.mod-badge[data-v-5445dac8] {
+    position: absolute;
+    left: 175px;
+    bottom: 240px;
+    content: "Yes";
+    font-size: 0;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+}
+
+.mod-badge[data-v-5445dac8]:after {
+    content: "✓";
+    font-size: 1.6rem;
+    margin-left: -2px;
+}
+
+.nav-btn[data-v-5445dac8] {
+    margin-top: 150px;
+    border-radius: 20px;
+    width: 300px;
+}
+
+.dropdown[data-v-5445dac8] {
+    margin-top: 150px;
+    background: rgba(var(--color-overlay), 0);
+}
+
+.dropdown[data-v-5445dac8]:hover {
+    background: rgba(var(--color-overlay), 0);
+}
+
+.nav-wrap[data-v-5445dac8] {
+    background-color: rgb(var(--color-foreground));
+}
+
+.nav .link[data-v-5445dac8] {
+    margin: 0 30px;
+    font-size: 1.7rem;
+    border-bottom: 2px solid rgba(0,0,0,0);
+    transition: 0.5s;
+}
+
+.nav .link[data-v-5445dac8]:hover {
+    border-bottom: 2px solid rgb(var(--color-text-light));
+    transition: 0.2s;
+}
+
+.nav .router-link-active[data-v-5445dac8] {
+    border-bottom: 2px solid rgba(var(--color-text-light), 0.5);
+}
+
+.nav .link[data-v-5445dac8]:nth-child(7),
+.nav .link[data-v-5445dac8]:nth-child(8) {
+    width: 0;
+    margin: 0;
+    padding: 0;
+    visibility: hidden;
+}
+
+/*===============================================
+    Body modifications
+===============================================*/
+
+.overview[data-v-5c30286e] * {
+    border-radius: 6px !important;
+}
+
+.favourite[data-v-5d0e8ada] {
+    border-radius: 7px !important;
+}
+
+.actions[data-v-6c3dc0b8] {
+    right: 0;
+    bottom: 0;
+    font-size: 1.35rem;
+    position: relative;
+    margin: -10px 10px 10px 15px;
+}
+
+.text .activity-markdown[data-v-6c3dc0b8] {
+    border-radius: 0 !important;
+    border-bottom: 1px solid rgba(var(--color-text), 0.1);
+}
+
+.time[data-v-6c3dc0b8] {
+    left: 72px;
+    top: 40px;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.text .name[data-v-6c3dc0b8] {
+    padding-top: 5px;
+    line-height: 15px;
+}
+
+.footer[data-v-815ccddc] {
     width: 0;
     height: 0;
+}
+
+.overview[data-v-5c30286e] {
+    background-color: rgb(var(--color-background));
+}
+
+.stats-wrap[data-v-815ccddc] {
+    display: grid;
+    grid-auto-flow: row;
+    grid-row-gap: 10px;
+    grid-template-columns: auto auto;
+    padding: 20px 40px;
+    text-align: left;
+}
+
+.stat[data-v-815ccddc]:nth-child(1) {
+    grid-row-start: span 2;
+}
+
+.stat:nth-child(1) .value[data-v-815ccddc] {
+    font-size: 5.5rem;
+}
+
+.stat .value[data-v-815ccddc] {
+    font-size: 2rem;
+    padding-bottom: 0px;
+}
+
+.stat .label[data-v-815ccddc] {
+    font-size: 1.2rem;
 }
