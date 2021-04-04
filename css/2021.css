@@ -231,15 +231,17 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 
 .banner-content[data-v-5445dac8] {
     margin-top: 20px;
+    position: relative;
 }
 
 .banner-content[data-v-5445dac8]:after{
     content: "";
+    position: absolute;
     background: url('https://i.imgur.com/zoJx4ue.png') no-repeat 0 0;
     display: inline-block;
     height: 310px;
-    width: 2000px;
-    margin-left: 57%;
+    width: inherit;
+    left: 66%;
     animation: shakeY 30s;
     animation-iteration-count: infinite;
 }
@@ -253,8 +255,8 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 
 .mod-badge[data-v-5445dac8] {
     position: absolute;
-    left: 175px;
-    bottom: 240px;
+    left: 70px;
+    bottom: 110px;
     content: "Yes";
     font-size: 0;
     border-radius: 50%;
@@ -271,7 +273,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 .nav-btn[data-v-5445dac8] {
     margin-top: 150px;
     border-radius: 20px;
-    width: 300px;
+    width: 200px;
 }
 
 .dropdown[data-v-5445dac8] {
@@ -323,7 +325,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     border-radius: 7px !important;
 }
 
-.actions[data-v-6c3dc0b8] {
+.activity-message .actions[data-v-6c3dc0b8] {
     right: 0;
     bottom: 0;
     font-size: 1.35rem;
@@ -336,7 +338,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     border-bottom: 1px solid rgba(var(--color-text), 0.1);
 }
 
-.time[data-v-6c3dc0b8] {
+.activity-message .time[data-v-6c3dc0b8] {
     left: 72px;
     top: 40px;
     font-weight: 300;
@@ -346,7 +348,11 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     align-items: center;
 }
 
-.text .name[data-v-6c3dc0b8] {
+.time[data-v-6c3dc0b8]:hover {
+    background: none;
+}
+
+.activity-message .text .name[data-v-6c3dc0b8] {
     padding-top: 5px;
     line-height: 15px;
 }
@@ -387,21 +393,32 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 }
 
 .list-stats[data-v-815ccddc]:nth-child(1) .stat[data-v-815ccddc]:nth-child(1) .label:before {
-    content: url(https://criolaservice.by/AL-css/svg/tv.svg);
-    width: 13px;
+    content: '';
+    mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+    -webkit-mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    width: 19px;
+    height: 16px;
     margin-right: 5px;
-    color: rgba(var(--color-text-light));
+    background-color: rgba(var(--color-text-light));
 }
 
-.list-stats[data-v-815ccddc]:nth-child(2) .stat[data-v-815ccddc]:nth-child(1) .label {
+.list-stats[data-v-815ccddc]:nth-child(2) .stat[data-v-815ccddc]:nth-child(1) .label,
+.list-stats[data-v-815ccddc]:nth-child(1) .stat[data-v-815ccddc]:nth-child(1) .label {
     display: flex;
     align-items: center;
     color: rgb(var(--color-text-light));
 }
 
 .list-stats[data-v-815ccddc]:nth-child(2) .stat[data-v-815ccddc]:nth-child(1) .label:before {
-    content: url(https://criolaservice.by/AL-css/svg/book.svg);
+    content: '';
+    mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+    -webkit-mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
     width: 13px;
+    height: 16px;
     margin-right: 5px;
-    color: rgba(var(--color-text-light));
+    background-color: rgba(var(--color-text-light));
 }
