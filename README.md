@@ -12,6 +12,20 @@ If you are looking for CSS examples, check out [Kex1016](https://github.com/Kex1
 
 ## Changelog
 
+### 1.0.5 - April 24, 2021
+
+[`2021.css`](https://github.com/dizzyatlovich/AL-css/blob/main/css/2021.css)
+- Edited navigation bar
+  - Added search bar
+- Edited banner container
+  - Replaced `flex` with `grid` for display consistency
+- Added sidebar
+- Added animations for the following elements:
+  - Like button
+  - Activity feed entries
+  - Activity feed entries' replies
+- Added `anime` and `manga` svg icons to anime and manga activities
+
 ### 1.0.0 - April 3, 2021
 
 Initial commit.
