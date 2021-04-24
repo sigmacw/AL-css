@@ -102,6 +102,70 @@
     animation-name: swing
 }
 
+@keyframes bounceIn {
+    0%,
+    20%,
+    40%,
+    60%,
+    80%,
+    to {
+        -webkit-animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+        animation-timing-function: cubic-bezier(.215, .61, .355, 1)
+    }
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
+    }
+    20% {
+        -webkit-transform: scale3d(1.1, 1.1, 1.1);
+        transform: scale3d(1.1, 1.1, 1.1)
+    }
+    40% {
+        -webkit-transform: scale3d(.9, .9, .9);
+        transform: scale3d(.9, .9, .9)
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: scale3d(1.03, 1.03, 1.03);
+        transform: scale3d(1.03, 1.03, 1.03)
+    }
+    80% {
+        -webkit-transform: scale3d(.97, .97, .97);
+        transform: scale3d(.97, .97, .97)
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1)
+    }
+}
+
+.animate__bounceIn {
+    -webkit-animation-duration: .75s;
+    animation-duration: .75s;
+    -webkit-animation-duration: calc(var(--animate-duration)*0.75);
+    animation-duration: calc(var(--animate-duration)*0.75);
+    -webkit-animation-name: bounceIn;
+    animation-name: bounceIn
+}
+
+@keyframes zoomIn {
+    0% {
+        opacity: 0;
+        -webkit-transform: scale3d(.3, .3, .3);
+        transform: scale3d(.3, .3, .3)
+    }
+    50% {
+        opacity: 1
+    }
+}
+
+.animate__zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn
+}
+
 
 /*===============================================
     body element modifications
@@ -167,13 +231,41 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 }
 
 /*===============================================
-    Removing that stupid genres widget
+    Navigation bar modifications
 ===============================================*/
 
-.desktop[data-v-aedb6876] {
-    height: 0;
-    visibility: hidden;
+.nav .wrap {
+    display: grid;
+    grid-template-columns: 70px auto auto 70px;
 }
+
+.nav .wrap .links {
+    grid-column-start: 3;
+    margin-left: -25px;
+}
+
+.nav .wrap .search {
+    grid-column-start: 2;
+    grid-row-start: 1;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 35px;
+    width: 100%;
+    cursor: text;
+    font-family: "Overpass"
+}
+
+.nav .wrap .search:after {
+    content: "Search AniList";
+    margin-left: 10px;
+    color: #777a9e;
+}
+
+.nav .wrap .user {
+    grid-column-start: 4;
+    grid-row-start: 1;
+}
+
 
 /*===============================================
     Header modifications
@@ -193,7 +285,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
 
 }
 
-.banner[data-v-5445dac8] {
+.header-wrap .banner {
     background-color: rgb(var(--color-foreground));
 }
 
@@ -201,12 +293,19 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     background-image: none !important;
 }
 
-.banner .container[data-v-5445dac8],
-.banner .container .banner-content {
+.header-wrap .banner .container {
     align-items: center;
 }
 
-.name[data-v-5445dac8] {
+.header-wrap .banner .container .banner-content {
+    align-items: center;
+    display: grid;
+    grid-template-columns: 120px auto 380px;
+    grid-template-rows: auto 36px;
+    margin-bottom: -50px;
+}
+
+.banner-content .name {
     font-size: 8rem;
     padding: 30px 50px 0px 0px;
     display: flex;
@@ -217,7 +316,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     filter: drop-shadow(0px 0px 0px rgba(0,0,0,0));
 }
 
-.avatar[data-v-5445dac8] {
+.header-wrap .avatar {
     margin-top: 10px;
     width: 100px;
     height: 100px;
@@ -229,31 +328,35 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     animation-iteration-count: infinite;
 }
 
-.banner-content[data-v-5445dac8] {
+.header-wrap .banner-content {
     margin-top: 20px;
     position: relative;
 }
 
-.banner-content[data-v-5445dac8]:after{
+.header-wrap .banner-content:after{
     content: "";
-    position: absolute;
+    position: relative;
     background: url('https://i.imgur.com/zoJx4ue.png') no-repeat 0 0;
     display: inline-block;
     height: 310px;
     width: inherit;
-    left: 66%;
+    /* left: 66%; */
     animation: shakeY 30s;
     animation-iteration-count: infinite;
 }
 
-.actions[data-v-5445dac8] {
+.header-wrap .actions {
     min-width: 1px;
     display: flex;
+    justify-content: flex-start;
     align-items: center;
-    margin-left: -290px;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    position: absolute;
+    top: -260px;
 }
 
-.mod-badge[data-v-5445dac8] {
+.header-wrap .mod-badge {
     position: absolute;
     left: 70px;
     bottom: 110px;
@@ -264,49 +367,49 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     height: 25px;
 }
 
-.mod-badge[data-v-5445dac8]:after {
+.header-wrap .mod-badge:after {
     content: "✓";
     font-size: 1.6rem;
     margin-left: -2px;
 }
 
-.nav-btn[data-v-5445dac8] {
+.header-wrap .actions .nav-btn {
     margin-top: 150px;
     border-radius: 20px;
     width: 200px;
 }
 
-.dropdown[data-v-5445dac8] {
+.header-wrap .actions .dropdown {
     margin-top: 150px;
     background: rgba(var(--color-overlay), 0);
 }
 
-.dropdown[data-v-5445dac8]:hover {
+..header-wrap .actions .dropdown:hover {
     background: rgba(var(--color-overlay), 0);
 }
 
-.nav-wrap[data-v-5445dac8] {
+.header-wrap .nav-wrap {
     background-color: rgb(var(--color-foreground));
 }
 
-.nav .link[data-v-5445dac8] {
+.header-wrap .nav-wrap .nav .link {
     margin: 0 30px;
     font-size: 1.7rem;
     border-bottom: 2px solid rgba(0,0,0,0);
     transition: 0.5s;
 }
 
-.nav .link[data-v-5445dac8]:hover {
+.header-wrap .nav-wrap .nav .link:hover {
     border-bottom: 2px solid rgb(var(--color-text-light));
     transition: 0.2s;
 }
 
-.nav .router-link-active[data-v-5445dac8] {
+.header-wrap .nav-wrap .nav .link.router-link-active {
     border-bottom: 2px solid rgba(var(--color-text-light), 0.5);
 }
 
-.nav .link[data-v-5445dac8]:nth-child(7),
-.nav .link[data-v-5445dac8]:nth-child(8) {
+.header-wrap .nav-wrap .nav .link:nth-child(7),
+.header-wrap .nav-wrap .nav .link:nth-child(8) {
     width: 0;
     margin: 0;
     padding: 0;
@@ -317,15 +420,16 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     Body modifications
 ===============================================*/
 
-.overview[data-v-5c30286e] * {
+.overview * {
     border-radius: 6px !important;
 }
 
-.favourite[data-v-5d0e8ada] {
+.favourites .favourite {
     border-radius: 7px !important;
 }
 
-.activity-message .actions[data-v-6c3dc0b8] {
+.activity-message .wrap > .actions,
+.activity-text .wrap > .actions {
     right: 0;
     bottom: 0;
     font-size: 1.35rem;
@@ -333,12 +437,14 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     margin: -10px 10px 10px 15px;
 }
 
-.text .activity-markdown[data-v-6c3dc0b8] {
+.activity-message .wrap > .text .activity-markdown,
+.activity-text .wrap > .text .activity-markdown {
     border-radius: 0 !important;
     border-bottom: 1px solid rgba(var(--color-text), 0.1);
 }
 
-.activity-message .time[data-v-6c3dc0b8] {
+.activity-message > .wrap > .time,
+.activity-text > .wrap > .time  {
     left: 72px;
     top: 40px;
     font-weight: 300;
@@ -348,25 +454,26 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     align-items: center;
 }
 
-.time[data-v-6c3dc0b8]:hover {
+.activity-entry .time:hover {
     background: none;
 }
 
-.activity-message .text .name[data-v-6c3dc0b8] {
+.activity-message > .wrap > .text .name,
+.activity-text > .wrap > .text .name {
     padding-top: 5px;
     line-height: 15px;
 }
 
-.footer[data-v-815ccddc] {
+.section > .stats-wrap > .list-stats > .footer {
     width: 0;
     height: 0;
 }
 
-.overview[data-v-5c30286e] {
+.overview {
     background-color: rgb(var(--color-background));
 }
 
-.stats-wrap[data-v-815ccddc] {
+.section > .stats-wrap > .list-stats > .stats-wrap {
     display: grid;
     grid-auto-flow: row;
     grid-row-gap: 10px;
@@ -375,24 +482,28 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     text-align: left;
 }
 
-.stat[data-v-815ccddc]:nth-child(1) {
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) {
     grid-row-start: span 2;
 }
 
-.stat:nth-child(1) .value[data-v-815ccddc] {
+.section > .stats-wrap > .list-stats > .stats-wrap .stat:nth-child(1) .value {
     font-size: 5.5rem;
 }
 
-.stat .value[data-v-815ccddc] {
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .value {
     font-size: 2rem;
     padding-bottom: 0px;
 }
 
-.stat .label[data-v-815ccddc] {
+.section > .stats-wrap > .list-stats > .stats-wrap .stat .label {
     font-size: 1.2rem;
 }
 
-.list-stats[data-v-815ccddc]:nth-child(1) .stat[data-v-815ccddc]:nth-child(1) .label:before {
+.section
+  > .stats-wrap
+  > .list-stats:nth-child(1)
+  .stat:nth-child(1)
+  .label:before {
     content: '';
     mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
     -webkit-mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
@@ -404,14 +515,18 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     background-color: rgba(var(--color-text-light));
 }
 
-.list-stats[data-v-815ccddc]:nth-child(2) .stat[data-v-815ccddc]:nth-child(1) .label,
-.list-stats[data-v-815ccddc]:nth-child(1) .stat[data-v-815ccddc]:nth-child(1) .label {
+.section > .stats-wrap > .list-stats:nth-child(2) .stat:nth-child(1) .label,
+.section > .stats-wrap > .list-stats:nth-child(1) .stat:nth-child(1) .label {
     display: flex;
     align-items: center;
     color: rgb(var(--color-text-light));
 }
 
-.list-stats[data-v-815ccddc]:nth-child(2) .stat[data-v-815ccddc]:nth-child(1) .label:before {
+.section
+  > .stats-wrap
+  > .list-stats:nth-child(2)
+  .stat:nth-child(1)
+  .label:before {
     content: '';
     mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
     -webkit-mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
@@ -421,4 +536,338 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     height: 16px;
     margin-right: 5px;
     background-color: rgba(var(--color-text-light));
+}
+
+/*===============================================
+    Removing that stupid genres widget
+===============================================*/
+
+.desktop:nth-of-type(3) {
+    height: 0;
+    visibility: hidden;
+}
+
+/*===============================================
+    Activity feed
+===============================================*/
+
+.activity-feed .liked {
+    color: rgb(255,247,162);
+    animation: bounceIn 1s;
+}
+
+.activity-feed .activity-entry,
+.activity-feed .activity-replies .reply {
+    animation: zoomIn 0.2s;
+}
+
+.text .private-badge {
+    position: absolute !important;
+    margin-top: 20px !important;
+    right: 20px !important;
+}
+
+.text .private-badge svg {
+    content: none;
+}
+
+.text .donator-badge:nth-child(1) {
+    top: -10px !important;
+}
+
+.favourites .studios .favourite {
+    background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.activity-anime_list .wrap,
+.activity-manga_list .wrap {
+    max-height: 70px;
+    overflow: hidden;
+    transition: 0.5s;
+}
+
+.activity-anime_list .wrap:hover,
+.activity-manga_list .wrap:hover {
+    max-height: 150px;
+    transition: 0.2s;
+}
+
+.activity-anime_list .wrap:after {
+    content: '';
+    mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+    -webkit-mask: url(https://criolaservice.by/AL-css/svg/tv.svg) no-repeat 50% 50%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    min-width: 50px;
+    min-height: 40px;
+    margin-right: 5px;
+    background-color: rgba(var(--color-text-light), 0.05);
+    position: absolute;
+    top: 25px;
+    right: 40px;
+}
+
+.activity-manga_list .wrap:after {
+    content: '';
+    mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+    -webkit-mask: url(https://criolaservice.by/AL-css/svg/book.svg) no-repeat 50% 50%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    min-width: 35px;
+    min-height: 40px;
+    margin-right: 5px;
+    background-color: rgba(var(--color-text-light), 0.05);
+    position: absolute;
+    top: 25px;
+    right: 40px;
+}
+
+/*===============================================
+    Overlay
+===============================================*/
+.overview > .section > .about > .content-wrap > .markdown b[href="overlay"] {
+  position: fixed;
+  width: 200px;
+  height: 100%;
+
+  top: 0;
+  left: -500px;
+  background: rgb(var(--color-foreground));
+  z-index: 100;
+
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+
+  transition: left 0.3s ease-in-out;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]:focus-within {
+  left: 0;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="arrow"] {
+  width: 40px;
+  height: 100px;
+  background: rgb(var(--color-foreground));
+
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+
+  position: fixed;
+  top: calc(50% - 50px);
+  left: 0;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="arrow"]
+  > a {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="arrow"]
+  > a::after {
+    content: '';
+    mask: url(https://criolaservice.by/AL-css/svg/chevron-right.svg) no-repeat 50% 50%;
+    -webkit-mask: url(https://criolaservice.by/AL-css/svg/chevron-right.svg) no-repeat 50% 50%;
+    mask-size: cover;
+    -webkit-mask-size: cover;
+    width: 13px;
+    height: 16px;
+    margin-right: 5px;
+    background-color: rgba(var(--color-text-light));
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]:focus-within
+  > b[href="arrow"] {
+  width: 100%;
+  height: 100%;
+  transition: all 0s linear;
+  top: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]:focus-within
+  > b[href="arrow"]
+  > a {
+  width: 0;
+  height: 0;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]:focus-within
+  > b[href="arrow"]
+  > a::after {
+  content: "";
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]:focus-within
+  > a[href="#"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="list"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin-bottom: auto;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="list"]
+  > a {
+  width: 90%;
+  text-align: center;
+  padding: 70px 0px;
+  color: white;
+  font-weight: 400;
+  font-size: 3rem;
+  border-radius: 20px !important;
+  pointer-events: auto;
+  transition: background linear 0.35s;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="list"]
+  > a:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transition: background linear 0.1s;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="list"]
+  > a:nth-of-type(1)::after {
+    content: 'aaaaa';
+    background-image: url(https://criolaservice.by/AL-css/png/spotify.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    color: rgba(0,0,0,0);
+    padding: 50px 30px;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="overlay"]
+  > b[href="list"]
+  > a:nth-of-type(2)::after {
+    content: 'aaaaa';
+    background-image: url(https://criolaservice.by/AL-css/png/osu.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+    color: rgba(0,0,0,0);
+    padding: 50px 30px;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="CSS_credits"] {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="CSS_credits"]
+  > b::after {
+  content: "CSS by me. Edited by ";
+}
+
+.overview
+  > .section
+  > .about
+  > .content-wrap
+  > .markdown
+  b[href="CSS_credits"]
+  > a::after {
+  content: "cakes";
 }
