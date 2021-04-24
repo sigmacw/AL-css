@@ -25,6 +25,7 @@ If you are looking for CSS examples, check out [Kex1016](https://github.com/Kex1
   - Activity feed entries
   - Activity feed entries' replies
 - Added `anime` and `manga` svg icons to anime and manga activities
+- Generalized the CSS by removing `[data-x-xxxx]` references
 
 ### 1.0.0 - April 3, 2021
 
