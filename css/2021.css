@@ -556,6 +556,11 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     animation: bounceIn 1s;
 }
 
+.activity-feed .activity-entry
+.wrap .actions {
+    z-index: 1;
+}
+
 .activity-feed .activity-entry,
 .activity-feed .activity-replies .reply {
     animation: zoomIn 0.2s;
@@ -605,6 +610,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     position: absolute;
     top: 25px;
     right: 40px;
+    z-index: 0;
 }
 
 .activity-manga_list .wrap:after {
@@ -620,6 +626,7 @@ body::-webkit-scrollbar-thumb {background-color: rgba(255, 221, 25, 0.75); borde
     position: absolute;
     top: 25px;
     right: 40px;
+    z-index: 0;
 }
 
 /*===============================================
