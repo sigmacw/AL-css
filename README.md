@@ -12,6 +12,13 @@ If you are looking for CSS examples, check out [Kex1016](https://github.com/Kex1
 
 ## Changelog
 
+### 1.0.6 - April 27, 2021
+
+[`2021.css`](https://github.com/dizzyatlovich/AL-css/blob/main/css/2021.css)
+- Formatting changes
+- Added animations
+- Added comments and description
+
 ### 1.0.5 - April 24, 2021
 
 [`2021.css`](https://github.com/dizzyatlovich/AL-css/blob/main/css/2021.css)
