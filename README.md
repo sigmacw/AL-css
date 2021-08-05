@@ -12,6 +12,10 @@ If you are looking for CSS examples, check out [Kex1016](https://github.com/Kex1
 
 ## Changelog
 
+### 1.0.7 - August 5, 2021
+[`2021.css`](https://github.com/dizzyatlovich/AL-css/blob/main/css/2021.css)
+- Updated `mod-badge` class after the update on AL
+
 ### 1.0.6 - April 27, 2021
 
 [`2021.css`](https://github.com/dizzyatlovich/AL-css/blob/main/css/2021.css)
