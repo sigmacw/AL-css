@@ -429,21 +429,22 @@ body::-webkit-scrollbar-thumb {
     top: -260px;
 }
 
-.header-wrap .mod-badge {
-    position: absolute;
-    left: 70px;
-    bottom: 110px;
-    content: "Yes";
-    font-size: 0;
-    border-radius: 50%;
-    width: 25px;
+.header-wrap .follower-badge {
+    position: absolute; 
+    left: 70px; 
+    bottom: 150px;
+    content: "Yes"; 
+    font-size: 0; 
+    border-radius: 50%; 
+    width: 25px; 
     height: 25px;
+    content: '';
 }
 
-.header-wrap .mod-badge:after {
-    content: "✓";
+.header-wrap .follower-badge:after {
+    content: "✓"; 
     font-size: 1.6rem;
-    margin-left: -2px;
+    margin-left: -2px; 
 }
 
 .header-wrap .actions .nav-btn {
